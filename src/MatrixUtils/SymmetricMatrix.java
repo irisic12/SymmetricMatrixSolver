@@ -20,10 +20,6 @@ public class SymmetricMatrix extends AbstractMatrix {
         super(n, n*l);
     }
 
-    int getL(){
-        return l;
-    }
-
     @Override
     protected int convertIJtoK(int i, int j) {
         if (i > j) return convertIJtoK(j, i);
@@ -40,5 +36,9 @@ public class SymmetricMatrix extends AbstractMatrix {
     protected boolean isInArray(int i, int j) {
         if (i > j) return isInArray(j, i);
         return j - i < l;
+    }
+
+    public int getL(){
+        return l;
     }
 }

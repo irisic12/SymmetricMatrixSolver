@@ -23,12 +23,15 @@ abstract class AbstractMatrix implements Matrix {
     }
 
     abstract protected int convertIJtoK(int i, int j);
+
     abstract protected boolean isInArray(int i, int j);
 
     @Override
     public double get(int i, int j) {
         checkIndexOrThrow(i, j);
-        if(!isInArray(i, j)) return 0;
+        if (!isInArray(i, j)) {
+            return 0;
+        }
         int k = convertIJtoK(i, j);
         return arr[k];
     }
@@ -36,7 +39,7 @@ abstract class AbstractMatrix implements Matrix {
     @Override
     public void set(int i, int j, double value) {
         checkIndexOrThrow(i, j);
-        if(!isInArray(i, j)) {
+        if (!isInArray(i, j)) {
             throw new IndexOutOfBoundsException(String.format(
                     "Unexpected index pos to set (%d, %d)",
                     i, j));
@@ -51,17 +54,17 @@ abstract class AbstractMatrix implements Matrix {
     }
 
     @Override
-    public void printFull(){
+    public void printFull() {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
-                System.out.print(get(i, j) + " ");
+                System.out.printf("%-25s", get(i, j));
             }
             System.out.println();
         }
     }
 
     @Override
-    public void printData(){
+    public void printData() {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
@@ -69,15 +72,15 @@ abstract class AbstractMatrix implements Matrix {
     }
 
     @Override
-    public double[] multiply(double[] vec){
-        if(vec.length != n) {
+    public double[] multiply(double[] vec) {
+        if (vec.length != n) {
             throw new ArrayIndexOutOfBoundsException("Vector and matrix have to be same size");
         }
         double[] res = new double[n];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                res[i] += vec[j]* get(i + 1, j+1);
+                res[i] += vec[j] * get(i + 1, j + 1);
             }
         }
 

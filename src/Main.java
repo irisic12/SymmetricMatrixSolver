@@ -8,7 +8,8 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        exampleRand(4, 2);
+        exampleRand(6, 4);
+        //example1();
 
     }
 
@@ -30,7 +31,7 @@ public class Main {
 
     static void exampleRand(int n, int l, double limit) {
         if (l > n) {
-            throw new RuntimeException("Idi naxyu");
+            throw new RuntimeException("Error: l>n");
         }
 
         Random rd = new Random();
@@ -65,10 +66,9 @@ public class Main {
 
     static double[] calcError(double[] x_real, double[] x_solve) {
         double[] error = new double[x_real.length];
-        /*
-            TODO:
-                посчитать ошибку
-         */
+        for (int i = 0; i < x_real.length; i++) {
+            error[i] = x_real[i] - x_solve[i];
+        }
         return error;
     }
 
