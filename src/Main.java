@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        exampleRand(6, 4);
+        exampleRand(4, 3);
         //example1();
 
     }

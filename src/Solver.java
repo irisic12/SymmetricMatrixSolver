@@ -14,9 +14,12 @@ public class Solver {
 
         // b
         for (int j = 1; j <= n; j++) {
-            for (int i = j; i <= j + l - 1; i++) {
+            int k0 = j <= l ? 1 : j - l + 1;
+            int kN = j <= n-l ? j + l - 1 : n;
+
+            for (int i = j; i <= kN; i++) {
                 double diff = a.get(i, j);
-                for (int k = 1; k <= j - 1; k++) {
+                for (int k = k0; k <= j - 1; k++) {
                     diff -= b.get(i, k) * b.get(j, k) / b.get(k, k);
                 }
                 b.set(i, j, diff);
